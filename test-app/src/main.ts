@@ -1,6 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { defineCustomElements } from 'test-components/loader';
+import { defineCustomElements, applyPolyfills } from 'test-components/loader';
+
+// Apply necessary Polyfills for IE11.
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
 
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/my-\w*/];
